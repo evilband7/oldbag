@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?><waypoints type="RUN">
+<onLoad>
+  include("waypoints/oldbag/oldbag_function.lua",true);		
+	questSet = getQuestSetNumber();
+</onLoad>
+	<waypoint x="10028" z="9655" y="0">
+		if questSet == 4 then
+			DoSetFour();			
+		end
+		__WPL:setDirection(WPT_FORWARD);
+	</waypoint>
+	<waypoint x="9986" z="9339" y="0">
+		if getQuestState() == "complete" then
+			player:target_NPC("Colin Lotus");
+			CompleteQuestByName("Strongholds, Morale and Rumors");
+		end
+		yrest(1000);
+		if getQuestState() == "not accepted" then
+			player:target_NPC("Colin Lotus");
+			AcceptQuestByName("Strongholds, Morale and Rumors");
+		end
+		
+		questSet = getQuestSetNumber();
+		if questSet == 0 or questSet == 1 or questSet == 2 or questSet == 3 or questSet == 5 or questSet == 6 or questSet == 7 then
+			__WPL:setDirection(WPT_FORWARD);
+		elseif questSet == 4 then
+			__WPL:setDirection(WPT_BACKWARD);
+		else
+			player:sleep();
+		end
+	</waypoint>
+	<!--
+	<waypoint x="10052" z="8898" y="0" tag="inside">
+	if getQuestState() == "complete" or questSet == 4 then
+		__WPL:setDirection(WPT_BACKWARD);
+	else
+		__WPL:setDirection(WPT_FORWARD);
+	end
+	</waypoint>
+	-->
+	<waypoint x="10085" z="9193" y="0" tag="right">
+		if questSet == 0 then
+			DoSetZero();			
+		elseif questSet == 1 then
+			DoSetOne();
+		elseif questSet == 2 then
+			DoSetTwo();	
+		elseif questSet == 3 then
+			DoSetThree();
+		elseif questSet == 4 then
+			yrest(100);
+		elseif questSet == 5 then
+			DoSetFive();
+		elseif questSet == 6 then
+			DoSetSix();
+		elseif questSet == 7 then
+			DoSetSeven();
+		else
+			player:sleep();
+		end
+		__WPL:setDirection(WPT_BACKWARD);
+	</waypoint>
+</waypoints>
