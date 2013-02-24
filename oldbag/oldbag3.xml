@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><waypoints type="RUN">
 <onLoad>
-  include("waypoints/oldbag_function.lua",true);		
+  include("waypoints/oldbag/oldbag_function.lua",true);		
 	questSet = getQuestSetNumber();
 </onLoad>
 	<waypoint x="10028" z="9655" y="0">
